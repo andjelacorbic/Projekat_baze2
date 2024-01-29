@@ -8,8 +8,8 @@ export default function Header() {
   return (
     <Navbar className='border-b-2'> 
       <Link to="/" className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold'>
-        <span className='px-2 py-1 bg-gradient-to-r from-purple-100 to-pink-500 rounded-lg text-white'>Trač</span>
-        Novine
+        <span className='px-2 py-1 bg-gradient-to-r from-purple-100 to-pink-500 rounded-lg text-white'>Congo</span>
+        NEWS
       </Link>
       <form>
         <TextInput
