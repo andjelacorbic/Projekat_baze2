@@ -1,9 +1,43 @@
-import { Button, Label, TextInput } from 'flowbite-react';
-import React from 'react'
-import { Link } from 'react-router-dom';
+import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 export default function SignUp() {
+  const [formData, setFormData] = useState({});
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.username || !formData.email || !formData.password) {
+      return setErrorMessage('Molimo vas popunite sva polja.');
+    }
+    try{
+      setLoading(true);
+      setErrorMessage(null);
+      const res = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        return setErrorMessage(data.message);
+      }
+      setLoading(false);
+      if(res.ok){
+        navigate('/sign-in');
+
+      }
+    } catch (error) {
+      setErrorMessage(error.message);
+      setLoading(false);
+    }
+  };
   return (
     <div className='min-h-screen mt-20'>
       
@@ -19,29 +53,43 @@ export default function SignUp() {
       </div>
       
       <div className='flex-2'>
-        <form className='flex flex-col gap-4'>
+        <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
           <div>
             <Label value='Korisničko ime' />
-            <TextInput type='text' placeholder='Korisničko ime' id='username' />
+            <TextInput type='text' placeholder='Korisničko ime' id='username' onChange={handleChange} />
           </div>
           <div>
             <Label value='Email adresa' />
-            <TextInput type='text' placeholder='ime@gmail.com' id='username' />
+            <TextInput type='email' placeholder='ime@gmail.com' id='email' onChange={handleChange} />
           </div>
           <div>
             <Label value='Lozinka' />
-            <TextInput type='text' placeholder='Lozinka' id='username' />
+            <TextInput type='password' placeholder='Lozinka' id='password' onChange={handleChange} />
           </div>
-          <Button gradientDuoTone='purpletoPink' type='submit'>
-            Registruj se
+          <Button gradientDuoTone='purpletoPink' type='submit' disabled={loading}>
+            {
+              loading ? (
+                <>
+                  <Spinner size='sm' />
+                  <span className='pl-3'>Učitava se...</span>
+                </>
+              ) : 'Registruj se'
+            }
           </Button>
         </form>
         <div className='flex gap-2 text-sm mt-5'>
           <span>Već imas nalog?</span>
           <Link to='/sign-in' className='text-blue-600'>
-            Uloguj se
+            Prijavi se
           </Link>
         </div>
+        {
+          errorMessage && (
+            <Alert className='mt-5' color='failure'>
+              {errorMessage}
+            </Alert>
+          )
+        }
         </div>
       </div>
     </div>
