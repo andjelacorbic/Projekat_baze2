@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 
+
+
 export default function DashSidebar() {
   const location = useLocation();
   const [tab, setTab] = useState('');
@@ -14,6 +16,9 @@ export default function DashSidebar() {
       setTab(tabFromUrl);
     }
   }, [location.search]);
+
+  
+
   return (
     <Sidebar className='w-full md:w-56'>
       <Sidebar.Items>
