@@ -46,3 +46,15 @@ export const updateUser = async (req, res, next) => {
         }
     }
 };
+
+export const deleteUser = async (req, res, next) => {
+    if (!req.user.isAdmin && req.user.id !== req.params.userId) {
+      return next(errorHandler(403, 'Brisanje nije moguće'));
+    }
+    try {
+      await User.findByIdAndDelete(req.params.userId);
+      res.status(200).json('Uspešno ste izbrisali korisnika');
+    } catch (error) {
+      next(error);
+    }
+  };
