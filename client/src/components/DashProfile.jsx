@@ -3,9 +3,10 @@ import { useSelector } from 'react-redux';
 import { Alert, Button, Modal, ModalBody, TextInput } from 'flowbite-react';
 import { updateStart, updateSuccess, updateFailure, deleteUserStart, deleteUserSuccess, deleteUserFailure, signoutSuccess } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export default function DashProfile() {
-  const {currentUser, error} = useSelector(state => state.user);
+  const {currentUser, error, loading} = useSelector(state => state.user);
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const [updateUserSuccess, setUpdateUserSuccess] = useState(null);
@@ -106,9 +107,21 @@ export default function DashProfile() {
         <TextInput type='text' id='username' placeholder='korisničko ime' defaultValue={currentUser.username} onChange={handleChange}/>
         <TextInput type='email' id='email' placeholder='email adresa' defaultValue={currentUser.email} onChange={handleChange}/>
         <TextInput type='password' id='password' placeholder='**********' onChange={handleChange}/>
-        <Button type='submit'color='gray'>
-          Izmeni
+        <Button type='submit'color='gray' outline disabled={loading}>
+        {loading ? 'Učitava se...' : 'Izmeni'}
+          
         </Button>
+        {currentUser.isAdmin && (
+          <Link to={'/create-post'}>
+            <Button
+              type='button'
+              gradientDuoTone='gray'
+              className='w-full'
+            >
+              Dodaj novost
+            </Button>
+          </Link>
+        )}
       </form>
       <div className='text-blue-500 flex justify-between mt-5'>
         <span onClick={()=>setShowModal(true)} className='cursor-pointer'>Obriši nalog</span>
