@@ -3,11 +3,29 @@ import { Avatar, Button, Dropdown, DropdownDivider, DropdownHeader, Navbar, Text
 import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
+import { signoutSuccess } from '../redux/user/userSlice';
+import { useDispatch } from 'react-redux';
 
 export default function Header() {
   const path = useLocation().pathName;
   const location = useLocation();
   const { currentUser } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const handleSignout = async () => {
+    try {
+      const res = await fetch('/api/user/signout', {
+        method: 'POST',
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        dispatch(signoutSuccess());
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <Navbar className='border-b-2'> 
       <Link to="/" className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold'>
@@ -47,7 +65,7 @@ export default function Header() {
               <Dropdown.Item>Profil</Dropdown.Item>
             </Link>
             <DropdownDivider />
-            <Dropdown.Item>Odjavi me</Dropdown.Item>
+            <Dropdown.Item onClick={handleSignout}>Odjavi me</Dropdown.Item>
           </Dropdown>
         ):
         (

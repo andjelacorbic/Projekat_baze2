@@ -33,14 +33,7 @@ export default function DashSidebar() {
          
           </Sidebar.Item>
           </Link>
-          <Sidebar.Item
-              active={tab === 'profile'}
-              icon={HiArrowSmRight}
-              className='cursor-pointer'           
-            >
-              Odjavi me
-         
-          </Sidebar.Item>
+          
         </Sidebar.ItemGroup>
       </Sidebar.Items>
     </Sidebar>
