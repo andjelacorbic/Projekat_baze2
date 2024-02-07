@@ -73,11 +73,11 @@ export const getposts = async (req, res, next) => {
 
 export const deletepost = async (req, res, next) => {
   if (!req.user.isAdmin || req.user.id !== req.params.userId) {
-    return next(errorHandler(403, 'You are not allowed to delete this post'));
+    return next(errorHandler(403, 'Brisanje ovog posta nije dozvoljeno.'));
   }
   try {
     await Post.findByIdAndDelete(req.params.postId);
-    res.status(200).json('The post has been deleted');
+    res.status(200).json('Objava je uspešno obrisana');
   } catch (error) {
     next(error);
   }
