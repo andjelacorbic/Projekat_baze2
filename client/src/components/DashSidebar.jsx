@@ -1,11 +1,5 @@
 import { Sidebar } from 'flowbite-react';
-import {
-  HiUser,
-  HiDocumentText,
-  HiOutlineUserGroup,
-  HiAnnotation,
-  HiChartPie,
-} from 'react-icons/hi';
+
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { signoutSuccess } from '../redux/user/userSlice';
@@ -35,32 +29,32 @@ export default function DashSidebar() {
             <Link to='/dashboard?tab=dash'>
               <Sidebar.Item
                 active={tab === 'dash' || !tab}
-                icon={HiChartPie}
+                className='font-serif font-bold'
                 as='div'
               >
-                Dashboard
+                PREGLED
               </Sidebar.Item>
             </Link>
           )}
           <Link to='/dashboard?tab=profile'>
             <Sidebar.Item
               active={tab === 'profile'}
-              icon={HiUser}
-              label={currentUser.isAdmin ? 'Admin' : 'User'}
+              
+              className='font-serif font-bold'
               labelColor='dark'
               as='div'
             >
-              Profil
+              MOJ PROFIL
             </Sidebar.Item>
           </Link>
           {currentUser.isAdmin && (
             <Link to='/dashboard?tab=posts'>
               <Sidebar.Item
                 active={tab === 'posts'}
-                icon={HiDocumentText}
+                className='font-serif font-bold'
                 as='div'
               >
-                Objave
+                OBJAVE
               </Sidebar.Item>
             </Link>
           )}
@@ -69,19 +63,19 @@ export default function DashSidebar() {
               <Link to='/dashboard?tab=users'>
                 <Sidebar.Item
                   active={tab === 'users'}
-                  icon={HiOutlineUserGroup}
+                  className='font-serif font-bold'
                   as='div'
                 >
-                  Korisnici
+                  KORISNICI
                 </Sidebar.Item>
               </Link>
               <Link to='/dashboard?tab=comments'>
                 <Sidebar.Item
                   active={tab === 'comments'}
-                  icon={HiAnnotation}
+                  className='font-serif font-bold'
                   as='div'
                 >
-                  Komentari
+                  KOMENTARI
                 </Sidebar.Item>
               </Link>
             </>

@@ -85,14 +85,15 @@ export default function CreatePost() {
   };
 
   return (
-   
-       <div className='p-3 max-w-3xl mx-auto min-h-screen'>
-      <h1 className='text-center text-3xl my-7 font-semibold'>Dodaj post</h1>
+   <div style={{ backgroundColor: '#CED4D7' }}>
+       <div style={{ backgroundColor: '#CED4D7' }} className='p-3 max-w-3xl mx-auto min-h-screen'>
+      <h1 className='text-center text-3xl my-7 font-serif font-bold uppercase'>Dodaj objavu</h1>
       <form className='flex flex-col gap-4'onSubmit={handleSubmit}>
         <div className='flex flex-col gap-4 sm:flex-row justify-between'>
           <TextInput
             type='text'
-            placeholder='Naslov'
+            className='font-serif'
+            placeholder='NASLOV'
             required
             id='title'
             className='flex-1'
@@ -105,13 +106,13 @@ export default function CreatePost() {
               setFormData({ ...formData, category: e.target.value })
             }
           >
-            <option value='uncategorized'>Izaberi kategoriju</option>
-            <option value='Vesti dana'>Vesti dana</option>
-            <option value='Vremenska prognoza'>Vremenska prognoza</option>
-            <option value='Horoskop'>Horoskop</option>
+            
+            <option className='font-serif' value='Vesti dana'>Vesti dana</option>
+            <option className='font-serif' value='Vremenska prognoza'>Vremenska prognoza</option>
+            <option className='font-serif' value='Horoskop'>Horoskop</option>
           </Select>
         </div>
-        <div className='flex gap-4 items-center justify-between border-4 border-gray-500 border-dotted p-3'>
+        <div className='flex gap-4 items-center justify-between border-4 border-gray-500 border p-3'>
           <FileInput
             type='file'
             accept='image/*'
@@ -134,7 +135,7 @@ export default function CreatePost() {
                 
               </div>
             ) : (
-              'Dodaj sliku'
+              'OTPREMI SLIKU'
             )}         
           </Button>
         </div>
@@ -156,7 +157,7 @@ export default function CreatePost() {
           }}
           
         />
-        <Button type='submit' color='gray'>
+        <Button className='font-serif font-bold uppercase' type='submit' color='gray'>
           Objavi
         </Button>
         {publishError && (
@@ -166,7 +167,7 @@ export default function CreatePost() {
         )}
       </form>
     </div>
-   
+   </div>
   );
 }
 

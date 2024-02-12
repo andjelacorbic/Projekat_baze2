@@ -1,8 +1,8 @@
 import { Modal, Table, Button } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { FaCheck, FaTimes } from 'react-icons/fa';
+
+
 
 export default function DashComments() {
   const { currentUser } = useSelector((state) => state.user);
@@ -77,12 +77,12 @@ export default function DashComments() {
         <>
           <Table hoverable className='shadow-md'>
             <Table.Head>
-              <Table.HeadCell>Date updated</Table.HeadCell>
-              <Table.HeadCell>Comment content</Table.HeadCell>
-              <Table.HeadCell>Number of likes</Table.HeadCell>
-              <Table.HeadCell>PostId</Table.HeadCell>
-              <Table.HeadCell>UserId</Table.HeadCell>
-              <Table.HeadCell>Delete</Table.HeadCell>
+              <Table.HeadCell className='font-serif font-bold'>Datum objavljivanja</Table.HeadCell>
+              <Table.HeadCell className='font-serif font-bold'>Komentar</Table.HeadCell>
+              <Table.HeadCell className='font-serif font-bold'>Broj lajkova</Table.HeadCell>
+              <Table.HeadCell className='font-serif font-bold'>ID posta</Table.HeadCell>
+              <Table.HeadCell className='font-serif font-bold'>ID korisnika</Table.HeadCell>
+              <Table.HeadCell className='font-serif font-bold'>Ukloni</Table.HeadCell>
             </Table.Head>
             {comments.map((comment) => (
               <Table.Body className='divide-y' key={comment._id}>
@@ -100,9 +100,9 @@ export default function DashComments() {
                         setShowModal(true);
                         setCommentIdToDelete(comment._id);
                       }}
-                      className='font-medium text-red-500 hover:underline cursor-pointer'
+                      className='font-medium text-red-500 font-serif hover:underline cursor-pointer'
                     >
-                      Delete
+                      UKLONI
                     </span>
                   </Table.Cell>
                 </Table.Row>
@@ -114,12 +114,12 @@ export default function DashComments() {
               onClick={handleShowMore}
               className='w-full text-teal-500 self-center text-sm py-7'
             >
-              Show more
+              Prikaži više
             </button>
           )}
         </>
       ) : (
-        <p>You have no comments yet!</p>
+        <p className='font-serif'>Još uvek nema komentara</p>
       )}
       <Modal
         show={showModal}
@@ -129,17 +129,17 @@ export default function DashComments() {
       >
         <Modal.Header />
         <Modal.Body>
-          <div className='text-center'>
-            <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
-            <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
-              Are you sure you want to delete this comment?
+          <div className='text-center font-serif'>
+            
+            <h3 className='mb-5 font-serif text-lg text-gray-500 dark:text-gray-400'>
+              Da li ste sigurni da želite da obrišete ovaj komentar?
             </h3>
-            <div className='flex justify-center gap-4'>
-              <Button color='failure' onClick={handleDeleteComment}>
-                Yes, I'm sure
+            <div className='flex justify-center gap-4 font-serif'>
+              <Button color='gray' onClick={handleDeleteComment}>
+                DA
               </Button>
               <Button color='gray' onClick={() => setShowModal(false)}>
-                No, cancel
+                NE
               </Button>
             </div>
           </div>

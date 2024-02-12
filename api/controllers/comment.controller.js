@@ -38,7 +38,7 @@ export const likeComment = async (req, res, next) => {
   try {
     const comment = await Comment.findById(req.params.commentId);
     if (!comment) {
-      return next(errorHandler(404, 'Comment not found'));
+      return next(errorHandler(404, 'Komentar nije pronađen.'));
     }
     const userIndex = comment.likes.indexOf(req.user.id);
     if (userIndex === -1) {

@@ -113,7 +113,7 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
                 {comment.numberOfLikes > 0 &&
                   comment.numberOfLikes +
                     ' ' +
-                    (comment.numberOfLikes === 1 ? 'like' : 'likes')}
+                    (comment.numberOfLikes === 1 ? 'Sviđa mi se' : 'Sviđanja')}
               </p>
               {currentUser &&
                 (currentUser._id === comment.userId || currentUser.isAdmin) && (
@@ -123,14 +123,14 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
                       onClick={handleEdit}
                       className='text-gray-400 hover:text-blue-500'
                     >
-                      Edit
+                      Izmeni
                     </button>
                     <button
                       type='button'
                       onClick={() => onDelete(comment._id)}
                       className='text-gray-400 hover:text-red-500'
                     >
-                      Delete
+                      Obriši
                     </button>
                   </>
                 )}

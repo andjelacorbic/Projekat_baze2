@@ -40,28 +40,28 @@ export default function SignIp() {
     }
   };
   return (
-    <div className='min-h-screen mt-20'>
+    <div style={{ backgroundColor: '#CED4D7' }} className='min-h-screen mt-20'>
       
-      <div className='flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center'>
-        <div className='flex-1'>
+      <div style={{ backgroundColor: '#CED4D7' }} className='flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center'>
+        <div style={{ backgroundColor: '#CED4D7' }} className='flex-1'>
       <Link to="/" className= 'text-4xl font-bold'>
-        <span className='px-2 py-1 bg-gradient-to-r from-purple-100 to-pink-500 rounded-lg text-white'>Congo</span>
-        NEWS
+        <span className='px-2 py-1 bg-gradient-to-r from-gray-100 to-gray-500 rounded-lg text-white font-serif'>Congo</span>
+        <a className='font-serif-bold'>NEWS</a> 
       </Link>
       <p className='text-sm mt-5'>
-        Prijavi se i budi u toku!
+        <a className='font-serif'>Prijavi se i budi u toku!</a>
       </p>
       </div>
       
-      <div className='flex-2'>
+      <div style={{ backgroundColor: '#CED4D7' }} className='flex-2'>
         <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
          
           <div>
-            <Label value='Email adresa' />
+            <Label className='font-serif' value='Email adresa' />
             <TextInput type='email' placeholder='ime@gmail.com' id='email' onChange={handleChange} />
           </div>
           <div>
-            <Label value='Lozinka' />
+            <Label className='font-serif' value='Lozinka' />
             <TextInput type='password' placeholder='********' id='password' onChange={handleChange} />
           </div>
           <Button gradientDuoTone='purpletoPink' type='submit' disabled={loading}>
@@ -69,16 +69,16 @@ export default function SignIp() {
               loading ? (
                 <>
                   <Spinner size='sm' />
-                  <span className='pl-3'>Učitava se...</span>
+                  <span className='pl-3 font-serif'>Učitava se...</span>
                 </>
-              ) : 'Uloguj se'
+              ) : <a  className='font-serif font-bold'>Uloguj se</a>
             }
           </Button>
         </form>
         <div className='flex gap-2 text-sm mt-5'>
-          <span>Nemaš nalog?</span>
+          <span className='font-serif'>Nemaš nalog?</span>
           <Link to='/sign-up' className='text-blue-600'>
-            Registruj se
+            <a className='font-serif'>Registruj se</a>
           </Link>
         </div>
         {

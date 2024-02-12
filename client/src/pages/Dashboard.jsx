@@ -21,7 +21,7 @@ export default function Dashboard() {
   
   
   return (
-    <div className='min-h-screen flex flex-col md:flex-row'>
+    <div style={{ backgroundColor: '#CED4D7' }} className='min-h-screen flex flex-col md:flex-row'>
       <div className='md:w-56'>
         {/* Sidebar */}
         <DashSidebar />

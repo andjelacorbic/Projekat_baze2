@@ -98,7 +98,7 @@ export default function DashProfile() {
 
   return (
     <div className='max-w-lg  p-3 w-full'>
-      <h1 className='my-7 text-left font-semibold text-3xl'>Moj profil</h1>
+      <h1 className='my-7 text-left font-semibold text-3xl font-serif font-bold '>MOJ PROFIL</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input type='file' accept='image/*' onChange={handleImageChange} ref={filePickerRef} hidden />
         <div className='w-32 h-32' onClick={() => filePickerRef.current.click ()}>
@@ -107,8 +107,8 @@ export default function DashProfile() {
         <TextInput type='text' id='username' placeholder='korisničko ime' defaultValue={currentUser.username} onChange={handleChange}/>
         <TextInput type='email' id='email' placeholder='email adresa' defaultValue={currentUser.email} onChange={handleChange}/>
         <TextInput type='password' id='password' placeholder='**********' onChange={handleChange}/>
-        <Button type='submit'color='gray' outline disabled={loading}>
-        {loading ? 'Učitava se...' : 'Izmeni'}
+        <Button className='font-serif font-bold' type='submit'color='gray' outline disabled={loading}>
+        {loading ? 'Učitava se...' : 'IZMENI PROFIL'}
           
         </Button>
         {currentUser.isAdmin && (
@@ -116,16 +116,16 @@ export default function DashProfile() {
             <Button
               type='button'
               gradientDuoTone='gray'
-              className='w-full'
+              className='w-full font-serif font-bold'
             >
-              Dodaj novost
+              DODAJ OBJAVU
             </Button>
           </Link>
         )}
       </form>
       <div className='text-blue-500 flex justify-between mt-5'>
-        <span onClick={()=>setShowModal(true)} className='cursor-pointer'>Obriši nalog</span>
-        <span onClick={handleSignout} className='cursor-pointer'>Odjavi me</span>
+        <span onClick={()=>setShowModal(true)} className='cursor-pointer font-serif'>Obriši nalog</span>
+        <span onClick={handleSignout} className='cursor-pointer font-serif'>Odjavi me</span>
       </div>
       {updateUserSuccess && (
         <Alert color='success' className='mt-5'>
@@ -147,15 +147,15 @@ export default function DashProfile() {
         <Modal.Body>
           <div className='text-center'>
             
-            <h3 className='mb-5 text-lg '>
+            <h3 className='mb-5 text-lg font-serif'>
               Da li ste sigurni da želite da obrišete nalog?
             </h3>
-            <div className='flex justify-center gap-4'>
+            <div className='flex justify-center gap-4 font-serif'>
               <Button color='gray' onClick={handleDeleteUser}>
-                Da
+                DA
               </Button>
-              <Button color='gray' onClick={() => setShowModal(false)}>
-                Ne
+              <Button className='font-serif' color='gray' onClick={() => setShowModal(false)}>
+                NE
               </Button>
             </div>
           </div>

@@ -2,7 +2,7 @@ import { Modal, Table, Button } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { HiOutlineExclamationCircle } from 'react-icons/hi';
+
 import { set } from 'mongoose';
 
 export default function DashPosts() {
@@ -77,18 +77,18 @@ export default function DashPosts() {
         <>
           <Table hoverable className='shadow-md'>
             <Table.Head>
-              <Table.HeadCell>Datum izmene</Table.HeadCell>
-              <Table.HeadCell>Naslovna strana</Table.HeadCell>
-              <Table.HeadCell>Naslov</Table.HeadCell>
-              <Table.HeadCell>Kategorija</Table.HeadCell>
-              <Table.HeadCell>Obriši</Table.HeadCell>
-              <Table.HeadCell>
+              <Table.HeadCell className='font-serif'>Datum izmene</Table.HeadCell>
+              <Table.HeadCell className='font-serif'>Naslovna strana</Table.HeadCell>
+              <Table.HeadCell className='font-serif'>Naslov</Table.HeadCell>
+              <Table.HeadCell className='font-serif'>Kategorija</Table.HeadCell>
+              <Table.HeadCell className='font-serif'>Obriši</Table.HeadCell>
+              <Table.HeadCell className='font-serif'>
                 <span>Izmeni</span>
               </Table.HeadCell>
             </Table.Head>
             {userPosts.map((post) => (
               <Table.Body className='divide-y' key={post._id}>
-                <Table.Row className='bg-black dark:border-gray-700 dark:bg-gray-800'>
+                <Table.Row className=' dark:border-gray-700 dark:bg-gray-800'>
                   <Table.Cell>
                     {new Date(post.updatedAt).toLocaleDateString()}
                   </Table.Cell>
@@ -116,9 +116,9 @@ export default function DashPosts() {
                         setShowModal(true);
                         setPostIdToDelete(post._id);
                       }}
-                      className='font-medium text-red-500 hover:underline cursor-pointer'
+                      className='font-medium font-serif text-red-500 hover:underline cursor-pointer'
                     >
-                      Obriši
+                      OBRIŠI
                     </span>
                   </Table.Cell>
                   <Table.Cell>
@@ -126,7 +126,7 @@ export default function DashPosts() {
                       className='text-teal-500 hover:underline'
                       to={`/update-post/${post._id}`}
                     >
-                      <span>Izmeni</span>
+                      <span className='font-serif'>IZMENI</span>
                     </Link>
                   </Table.Cell>
                 </Table.Row>
@@ -136,9 +136,9 @@ export default function DashPosts() {
           {showMore && (
             <button
               onClick={handleShowMore}
-              className='w-full text-teal-500 self-center text-sm py-7'
+              className='w-full font-serif text-teal-500 self-center text-sm py-7'
             >
-              Prikaži više
+              PRIKAŽI VIŠE
             </button>
           )}
         </>
@@ -154,11 +154,11 @@ export default function DashPosts() {
         <Modal.Header />
         <Modal.Body>
           <div className='text-center'>
-            <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
-            <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
+            
+            <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400 font-serif'>
               Da li ste sigurni da želite da obrišete?
             </h3>
-            <div className='flex justify-center gap-4'>
+            <div className='flex justify-center gap-4 font-serif'>
               <Button color='gray' onClick={handleDeletePost}>
                 Da
               </Button>
