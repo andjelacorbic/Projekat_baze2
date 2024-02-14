@@ -8,7 +8,9 @@ export default function Projects() {
       <p className='text-md text-gray-500 font-serif text-center'>Želite da budete u toku? Pridružite nam se i postanite član CongoNews-a! Uvek aktuelni! Uvek tu za vas!</p>
       <CallToAction />
     </div>
+
     </div>
+    
     
 
   )

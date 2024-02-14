@@ -2,7 +2,7 @@ import { Sidebar } from 'flowbite-react';
 
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { signoutSuccess } from '../redux/user/userSlice';
+
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
@@ -58,28 +58,7 @@ export default function DashSidebar() {
               </Sidebar.Item>
             </Link>
           )}
-          {currentUser.isAdmin && (
-            <>
-              <Link to='/dashboard?tab=users'>
-                <Sidebar.Item
-                  active={tab === 'users'}
-                  className='font-serif font-bold'
-                  as='div'
-                >
-                  KORISNICI
-                </Sidebar.Item>
-              </Link>
-              <Link to='/dashboard?tab=comments'>
-                <Sidebar.Item
-                  active={tab === 'comments'}
-                  className='font-serif font-bold'
-                  as='div'
-                >
-                  KOMENTARI
-                </Sidebar.Item>
-              </Link>
-            </>
-          )}
+          
           
         </Sidebar.ItemGroup>
       </Sidebar.Items>
